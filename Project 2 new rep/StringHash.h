@@ -17,12 +17,14 @@ inline int StringHash<T>::h1(string key)
 {
     long long hashValue = 0;
     int m = this->size;
-
-    for (size_t i = 0; i < key.length(); ++i) {
-        hashValue += static_cast<unsigned char>(key[i]) * static_cast<long long>(pow(256, i));
-        hashValue %= m;
+    if (key.length() <= 8) {
+        for (size_t i = 0; i < key.length(); ++i) {
+            hashValue += static_cast<unsigned char>(key[i]) * static_cast<long long>(pow(256, i));
+            hashValue %= m;
+        }
+        return static_cast<int>(hashValue % m);
     }
-    return static_cast<int>(hashValue % m);
+   throw "key is longer than 8";
 }
 
 template<class T>

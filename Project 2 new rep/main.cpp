@@ -59,38 +59,39 @@ int main()
 
 
 
-	//*******************************    בדיקה של מספרים שלמים    ********************************
-	/*IntHash<int> H(10);
-	H.insert(8, 350);
-	H.insert(4, 49);
-	H.insert(5, 13);
-	H.insert(46, 700);
-	H.insert(4, 46);
+	//******************************* Evytar"s main: *******************************
+	//try {
+	///*	IntHash<int> H(10);
+	//	H.insert(8, 350);
+	//	H.insert(4, 49);
+	//	H.insert(5, 13);
+	//	H.insert(46, 700);
+	//	H.insert(4, 46);
 
-	H.print();
+	//	H.print();
 
-	H.remove(4);
-	cout << endl;
-	H.print();
-	cout << endl;
-	H.remove(4);
+	//	H.remove(4);
+	//	cout << endl;
+	//	H.print();
+	//	cout << endl;
+	//	cout << H.search(4) << endl;
+	//	H.remove(4);*/
 
-	cout << H.search(5);*/
+	//	/*StringHash<string> H(10);
+	//	H.insert("hello", "evyatar");
+	//	H.insert("hello", "johnni");
 
+	//	H.insert("amiiii", "evyatar");
+	//	H.print();
+	//	cout << endl;
+	//	H.remove("hello");
+	//	H.print();
+	//	cout << H.search("amiiii") << endl;
+	//	cout << H.search("hello") << endl;*/
 
-	/*StringHash<string> H(10);
-	H.insert("hello", "evyatar");
-	H.insert("hello", "johnni");
-
-	H.insert("amiiii", "evyatar");
-	H.print();
-	cout << endl;
-	H.remove("hello");
-	H.print();
-	cout << H.search("amiiii") << endl;
-	*///cout << H.search("hello") << endl;  לבדוק מה קורה אם זורקים שגיאה עקב אי מציאת המפתח 
-
-
-
+	//}
+	//catch (const char* msg) {
+	//	cout << msg << endl;
+	//}	
 	return 0;
 }

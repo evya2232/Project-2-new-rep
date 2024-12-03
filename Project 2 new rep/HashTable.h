@@ -34,10 +34,6 @@ protected:
 
 	int hash(K k, int i);      ////A function that returns the position in the table for a key k in attempt i
 
-
-
-	// TODO: Based on the functions, define the hash function, using double hashing
-
 public:
 
 	//******** Constructors *******
@@ -78,7 +74,7 @@ inline int closestPrime(int n) {// A function to find the closest prime number
 }
 
 template<class K, class T >
-HashTable<K, T>::HashTable(int m)   // contructor 
+HashTable<K, T>::HashTable(int m)   // constructor 
 {
 	size = closestPrime(m);// Finding the prime number closest to the desired size
 	table = new Item[size];// create new array of items in size of size

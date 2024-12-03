@@ -7,7 +7,6 @@ void College::addCourse()
 	cin >> name;
 	cout << "enter course id" << endl;
 	cin >> num;
-	// TODO: Add the course to the courses table
 	courses.insert(num, name);
 }
 void College::removeCourse()
@@ -15,7 +14,6 @@ void College::removeCourse()
 	int num;
 	cout << "enter course id" << endl;
 	cin >> num;
-	// TODO: Remove the course from the course table
 	courses.remove(num);
 }
 void College::addStudent()
@@ -24,7 +22,6 @@ void College::addStudent()
 	cout << "enter students name" << endl;
 	cin >> name;
 	list<int> lst;
-	// TODO: Insert the student to the students table
 	students.insert(name, lst);
 }
 void College::removeStudent()
@@ -32,7 +29,6 @@ void College::removeStudent()
 	string name;
 	cout << "enter students name" << endl;
 	cin >> name;
-	// TODO: Remove the student from the student table
 	students.remove(name);
 }
 void College::registration()
@@ -44,8 +40,7 @@ void College::registration()
 	cout << "enter course id" << endl;
 	cin >> num;
 	try {
-		// TODO: add the course id (if it exists) to the end of the student's course-list
-
+		students.search(name).push_back(num);
 	}
 	catch (const char* msg)
 	{
@@ -61,25 +56,25 @@ void College::removeReg()
 	cout << "enter course id" << endl;
 	cin >> num;
 	try {
-		// TODO: remove the course id (if it exists) from the student's list
+		students.search(name).remove(num);
 	}
 	catch (const char* msg)
 	{
 		cout << msg << endl;
 	}
 }
+
 void College::print()
 {
 	string name;
 	cout << "enter students name" << endl;
 	cin >> name;
 	try {
-		list<int> lst; // TODO: fix, so this would be the student's courses lis
+		list<int> lst = students.search(name);
 		for (list<int>::iterator it = lst.begin(); it != lst.end(); it++)
 		{
-			int k = *it;
-			Course c; // TODO: fix
-			cout << c.getName() << ' ';
+			Course temp = courses.search(*it);
+			cout << temp.getName() << ' ';
 		}
 		cout << endl;
 	}
@@ -89,9 +84,11 @@ void College::print()
 	}
 
 }
+
 void College::printStudentsTable() {
 	students.print();
 }
+
 void College::printCoursesTable() {
 	courses.print();
 }
