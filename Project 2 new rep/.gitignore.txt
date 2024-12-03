@@ -1,0 +1,15 @@
+# Ignore build output directories
+/x64/
+/Debug/
+/Release/
+
+# Ignore Visual Studio files
+*.user
+*.vcxproj.user
+*.suo
+*.cache
+*.log
+
+# Ignore executable files
+*.exe
+*.dll
