@@ -15,7 +15,7 @@ public:
 template<class T>
 int IntHash<T>::h1(int k)
 {
-	return (k % this->size);
+	return (k % (this->size));
 }
 
 template<class T>

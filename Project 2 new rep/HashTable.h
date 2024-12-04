@@ -62,13 +62,10 @@ int HashTable<K, T>::hash(K k, int i) {//A function that returns the position in
 inline int closestPrime(int n) {// A function to find the closest prime number
 	if (PrimeUtil::prime(n)) return n; // if this number is prime
 
-	int lower = n - 1; // check down
 	int upper = n + 1; // check up
 
 	while (true) {
-		if (lower > 1 && PrimeUtil::prime(lower)) return lower; // If we found a smaller prime number
 		if (PrimeUtil::prime(upper)) return upper;             // If we found a bigger prime number
-		--lower; // continue check down
 		++upper; // continue check up
 	}
 }
@@ -91,44 +88,52 @@ template<class K, class T>
 inline void HashTable<K, T>::print() // print all the items in the table 
 {
 	for (int i = 0; i < size; i++)
+	{
 		if (table[i].flag == FULL)
 			cout << i << ":\t" << table[i].key << '\n';
+		else if (table[i].flag == DELETED)
+			cout << i << ":\t" << "DELETED" << '\n';
+	}
 }
 
 template<class K, class T>
 T& HashTable<K, T>::search(K k) {
-	int i = 0;
-	int index = hash(k, i);
 
-	while (i < size) {
-		if (table[index].flag == EMPTY) {
+	int index;
+	for (int i = 0; i < size;i++)
+	{
+		 index = hash(k, i);
+
+		if (table[index].flag == DELETED) 
+			continue;
+		if (table[index].flag == FULL) {
+			if (table[index].key == k)
+				return table[index].data;
+			else
+				continue;
+		}
+		else
 			throw "Key does not exist in table";
-		}
-
-		if (table[index].flag == FULL && table[index].key == k) {
-			return table[index].data;
-		}
-
-		index = hash(k, ++i);
 	}
-
 	throw "Key does not exist in table";
 }
 template<class K, class T>
 void HashTable<K, T>::insert(K k, T data)
 {
-	K key = k;
-	int i = 0;
-	int index = hash(key, i);
+	int i;
+	int index;
 
-	while (i < size && table[index].flag == FULL) {
-
-		index = hash(key, ++i);
+	for (i = 0;; i++) {
+		index = hash(k, i);
+		if (table[index].flag == EMPTY || table[index].flag == DELETED) {
+			table[index].data = data;
+			table[index].key = k;
+			table[index].flag = FULL;
+			break;
+	    }
 	}
-
-	table[index].data = data;
-	table[index].key = k;
-	table[index].flag = FULL;
+	if (i >= size)
+		throw "table is full";
 }
 
 
